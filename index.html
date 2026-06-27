@@ -20,6 +20,7 @@
             --neon-dark: #A8D440;
             --gray-100: #F5F5F5;
             --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
             --gray-400: #A3A3A3;
             --gray-600: #525252;
             --gray-800: #262626;
@@ -27,20 +28,15 @@
             --font-ar: 'Cairo', sans-serif;
             --radius: 16px;
             --radius-sm: 8px;
+            --radius-lg: 24px;
             --shadow: 0 4px 24px rgba(0,0,0,0.08);
             --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+            --shadow-neon: 0 4px 24px rgba(200, 245, 96, 0.3);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-en);
@@ -50,17 +46,12 @@
             overflow-x: hidden;
         }
 
-        /* Arabic text override */
-        [lang="ar"] {
-            font-family: var(--font-ar);
-        }
+        [lang="ar"] { font-family: var(--font-ar); }
 
-        /* Navigation */
+        /* ===== NAVIGATION ===== */
         .nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             padding: 20px 5%;
             display: flex;
@@ -68,13 +59,11 @@
             align-items: center;
             transition: var(--transition);
         }
-
         .nav.scrolled {
-            background: rgba(250, 249, 246, 0.92);
+            background: rgba(250, 249, 246, 0.95);
             backdrop-filter: blur(20px);
             box-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
-
         .logo {
             font-family: var(--font-en);
             font-size: 1.5rem;
@@ -86,10 +75,8 @@
             align-items: center;
             gap: 10px;
         }
-
         .logo-mark {
-            width: 36px;
-            height: 36px;
+            width: 36px; height: 36px;
             border-radius: 50%;
             background: var(--black);
             display: flex;
@@ -101,13 +88,11 @@
             border: 2px solid var(--neon);
             box-shadow: 0 0 12px rgba(200, 245, 96, 0.4);
         }
-
         .nav-links {
             display: flex;
             gap: 32px;
             align-items: center;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--gray-600);
@@ -116,26 +101,18 @@
             transition: var(--transition);
             position: relative;
         }
-
-        .nav-links a:hover {
-            color: var(--black);
-        }
-
+        .nav-links a:hover { color: var(--black); }
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
             background: var(--neon);
             transition: var(--transition);
         }
+        .nav-links a:hover::after { width: 100%; }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
+        /* ===== BUTTONS ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -152,49 +129,50 @@
             border: none;
             outline: none;
         }
-
         .btn-primary {
             background: var(--black);
             color: var(--pure-white);
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
-
         .btn-neon {
             background: var(--neon);
             color: var(--black);
             font-weight: 700;
             box-shadow: 0 4px 20px rgba(200, 245, 96, 0.4);
         }
-
         .btn-neon:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 32px rgba(200, 245, 96, 0.5);
             background: var(--neon-dark);
         }
-
         .btn-outline {
             background: transparent;
             color: var(--black);
             border: 1.5px solid var(--gray-200);
         }
-
         .btn-outline:hover {
             border-color: var(--black);
             background: var(--black);
             color: var(--pure-white);
         }
-
-        .btn-sm {
-            padding: 10px 24px;
-            font-size: 0.85rem;
+        .btn-white {
+            background: var(--pure-white);
+            color: var(--black);
+            border: 1.5px solid var(--gray-200);
         }
+        .btn-white:hover {
+            border-color: var(--neon);
+            box-shadow: var(--shadow-neon);
+        }
+        .btn-sm { padding: 10px 24px; font-size: 0.85rem; }
+        .btn-lg { padding: 16px 40px; font-size: 1rem; }
+        .btn-full { width: 100%; }
 
-        /* Hero Section */
+        /* ===== HERO ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -204,50 +182,38 @@
             overflow: hidden;
             background: var(--off-white);
         }
-
         .hero-bg {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 55%;
-            height: 100%;
+            top: 0; right: 0;
+            width: 55%; height: 100%;
             background: linear-gradient(135deg, var(--gray-100) 0%, var(--off-white) 100%);
             border-radius: 0 0 0 80px;
             z-index: 0;
         }
-
         .hero-visual {
             position: absolute;
-            right: 5%;
-            top: 50%;
+            right: 5%; top: 50%;
             transform: translateY(-50%);
-            width: 45%;
-            max-width: 600px;
+            width: 45%; max-width: 600px;
             aspect-ratio: 4/5;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             z-index: 1;
         }
-
         .hero-visual img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
         }
-
         .hero-visual::before {
             content: '';
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3));
             z-index: 1;
         }
-
         .hero-badge {
             position: absolute;
-            bottom: 24px;
-            left: 24px;
+            bottom: 24px; left: 24px;
             z-index: 2;
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
@@ -259,26 +225,21 @@
             font-size: 0.85rem;
             font-weight: 500;
         }
-
         .hero-badge-dot {
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background: var(--neon);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
-
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.4; }
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 540px;
         }
-
         .hero-tag {
             display: inline-flex;
             align-items: center;
@@ -292,12 +253,7 @@
             color: var(--gray-600);
             margin-bottom: 24px;
         }
-
-        .hero-tag span {
-            color: var(--neon-dark);
-            font-weight: 700;
-        }
-
+        .hero-tag span { color: var(--neon-dark); font-weight: 700; }
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
@@ -306,12 +262,7 @@
             margin-bottom: 20px;
             color: var(--black);
         }
-
-        .hero h1 span {
-            color: var(--gray-400);
-            font-weight: 300;
-        }
-
+        .hero h1 span { color: var(--gray-400); font-weight: 300; }
         .hero-subhead {
             font-size: 1.15rem;
             color: var(--gray-600);
@@ -319,56 +270,38 @@
             max-width: 440px;
             line-height: 1.7;
         }
-
         .hero-cta {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
             margin-bottom: 40px;
         }
-
         .hero-stats {
             display: flex;
             gap: 40px;
             padding-top: 32px;
             border-top: 1px solid var(--gray-200);
         }
-
-        .stat {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
+        .stat { display: flex; flex-direction: column; gap: 4px; }
         .stat-value {
             font-size: 1.6rem;
             font-weight: 700;
             color: var(--black);
         }
-
         .stat-label {
             font-size: 0.8rem;
             color: var(--gray-400);
             font-weight: 500;
         }
 
-        /* Section Base */
-        .section {
-            padding: 100px 5%;
-            position: relative;
-        }
-
-        .section-dark {
-            background: var(--black);
-            color: var(--pure-white);
-        }
-
+        /* ===== SECTIONS ===== */
+        .section { padding: 100px 5%; position: relative; }
+        .section-dark { background: var(--black); color: var(--pure-white); }
         .section-header {
             text-align: center;
             max-width: 600px;
             margin: 0 auto 64px;
         }
-
         .section-label {
             display: inline-block;
             padding: 6px 16px;
@@ -381,12 +314,6 @@
             border-radius: 100px;
             margin-bottom: 16px;
         }
-
-        .section-dark .section-label {
-            background: var(--neon);
-            color: var(--black);
-        }
-
         .section h2 {
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
@@ -394,27 +321,15 @@
             margin-bottom: 16px;
             line-height: 1.2;
         }
-
         .section p {
             color: var(--gray-400);
             font-size: 1.05rem;
             line-height: 1.7;
         }
 
-        .section-dark p {
-            color: var(--gray-400);
-        }
-
-        /* Booking Agent Section */
-        .booking-section {
-            background: var(--pure-white);
-        }
-
-        .booking-container {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
+        /* ===== BOOKING AGENT ===== */
+        .booking-section { background: var(--pure-white); }
+        .booking-container { max-width: 720px; margin: 0 auto; }
         .booking-card {
             background: var(--pure-white);
             border: 1px solid var(--gray-200);
@@ -422,62 +337,37 @@
             padding: 48px;
             box-shadow: var(--shadow-lg);
         }
-
         .booking-step {
             display: none;
             animation: fadeIn 0.4s ease;
         }
-
-        .booking-step.active {
-            display: block;
-        }
-
+        .booking-step.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .step-header {
-            margin-bottom: 32px;
-        }
-
+        .step-header { margin-bottom: 32px; }
         .step-header h3 {
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 8px;
         }
-
-        .step-header p {
-            color: var(--gray-400);
-            font-size: 0.95rem;
-        }
-
+        .step-header p { color: var(--gray-400); font-size: 0.95rem; }
         .step-indicator {
             display: flex;
             gap: 8px;
             margin-bottom: 40px;
         }
-
         .step-dot {
-            flex: 1;
-            height: 4px;
+            flex: 1; height: 4px;
             background: var(--gray-200);
             border-radius: 100px;
             transition: var(--transition);
         }
+        .step-dot.active { background: var(--neon); }
+        .step-dot.completed { background: var(--black); }
 
-        .step-dot.active {
-            background: var(--neon);
-        }
-
-        .step-dot.completed {
-            background: var(--black);
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
+        .form-group { margin-bottom: 24px; }
         .form-label {
             display: block;
             font-size: 0.9rem;
@@ -485,10 +375,7 @@
             margin-bottom: 10px;
             color: var(--black);
         }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
+        .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 14px 18px;
             border: 1.5px solid var(--gray-200);
@@ -499,42 +386,26 @@
             background: var(--pure-white);
             color: var(--black);
         }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: var(--neon-dark);
             box-shadow: 0 0 0 4px rgba(200, 245, 96, 0.15);
         }
+        .form-textarea { resize: vertical; min-height: 100px; }
 
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .slider-container {
-            margin-top: 8px;
-        }
-
+        .slider-container { margin-top: 8px; }
         .slider-value {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
         }
-
-        .slider-value span {
-            font-size: 0.85rem;
-            color: var(--gray-400);
-        }
-
+        .slider-value span { font-size: 0.85rem; color: var(--gray-400); }
         .slider-value .current-value {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--black);
         }
-
         input[type="range"] {
             width: 100%;
             -webkit-appearance: none;
@@ -543,11 +414,9 @@
             border-radius: 100px;
             outline: none;
         }
-
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
+            width: 24px; height: 24px;
             background: var(--neon);
             border-radius: 50%;
             cursor: pointer;
@@ -560,7 +429,6 @@
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
         }
-
         .radio-card {
             position: relative;
             padding: 20px;
@@ -570,53 +438,29 @@
             transition: var(--transition);
             text-align: center;
         }
-
-        .radio-card:hover {
-            border-color: var(--gray-400);
-        }
-
-        .radio-card input {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .radio-card input:checked + .radio-content {
-            color: var(--black);
-        }
-
+        .radio-card:hover { border-color: var(--gray-400); }
+        .radio-card input { position: absolute; opacity: 0; }
+        .radio-card input:checked + .radio-content { color: var(--black); }
         .radio-card:has(input:checked) {
             border-color: var(--neon-dark);
             background: rgba(200, 245, 96, 0.05);
             box-shadow: 0 0 0 4px rgba(200, 245, 96, 0.1);
         }
-
         .radio-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
         }
-
-        .radio-icon {
-            font-size: 1.5rem;
-        }
-
-        .radio-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .radio-sub {
-            font-size: 0.75rem;
-            color: var(--gray-400);
-        }
+        .radio-icon { font-size: 1.5rem; }
+        .radio-title { font-weight: 600; font-size: 0.9rem; }
+        .radio-sub { font-size: 0.75rem; color: var(--gray-400); }
 
         .checkbox-group {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 12px;
         }
-
         .checkbox-card {
             position: relative;
             padding: 16px;
@@ -628,22 +472,15 @@
             align-items: center;
             gap: 12px;
         }
-
         .checkbox-card:has(input:checked) {
             border-color: var(--neon-dark);
             background: rgba(200, 245, 96, 0.05);
         }
-
         .checkbox-card input {
-            width: 18px;
-            height: 18px;
+            width: 18px; height: 18px;
             accent-color: var(--black);
         }
-
-        .checkbox-label {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+        .checkbox-label { font-size: 0.9rem; font-weight: 500; }
 
         .booking-nav {
             display: flex;
@@ -662,32 +499,20 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .price-preview-label {
-            font-size: 0.85rem;
-            color: var(--gray-400);
-        }
-
+        .price-preview-label { font-size: 0.85rem; color: var(--gray-400); }
         .price-preview-value {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--black);
         }
+        .price-preview-value span { font-size: 0.9rem; color: var(--gray-400); font-weight: 400; }
 
-        .price-preview-value span {
-            font-size: 0.9rem;
-            color: var(--gray-400);
-            font-weight: 400;
-        }
-
-        /* Summary Card */
         .summary-card {
             background: var(--gray-100);
             border-radius: var(--radius-sm);
             padding: 24px;
             margin-bottom: 24px;
         }
-
         .summary-row {
             display: flex;
             justify-content: space-between;
@@ -695,7 +520,6 @@
             border-bottom: 1px solid var(--gray-200);
             font-size: 0.9rem;
         }
-
         .summary-row:last-child {
             border-bottom: none;
             font-weight: 700;
@@ -706,7 +530,137 @@
             border-top: 2px solid var(--black);
         }
 
-        /* Why Tilly Grid */
+        /* ===== CONFIRMATION / CALENDAR INTEGRATION ===== */
+        .confirmation-card {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .confirmation-icon {
+            width: 80px; height: 80px;
+            background: var(--neon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 24px;
+            box-shadow: var(--shadow-neon);
+            animation: scaleIn 0.5s ease;
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        .confirmation-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .confirmation-card > p {
+            color: var(--gray-400);
+            margin-bottom: 32px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .booking-ref {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            border: 1px dashed var(--gray-300);
+        }
+        .calendar-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+        .calendar-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--pure-white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--black);
+            text-align: left;
+        }
+        .calendar-btn:hover {
+            border-color: var(--neon);
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+        .calendar-btn-icon {
+            width: 40px; height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .calendar-btn-info { display: flex; flex-direction: column; }
+        .calendar-btn-title { font-weight: 600; font-size: 0.9rem; }
+        .calendar-btn-sub { font-size: 0.75rem; color: var(--gray-400); }
+
+        .confirmation-details {
+            background: var(--gray-100);
+            border-radius: var(--radius);
+            padding: 24px;
+            max-width: 500px;
+            margin: 0 auto 24px;
+            text-align: left;
+        }
+        .confirmation-details h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-400);
+            margin-bottom: 16px;
+        }
+        .conf-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .conf-row:last-child { border-bottom: none; }
+        .conf-row span:first-child { color: var(--gray-400); }
+        .conf-row span:last-child { font-weight: 600; }
+
+        .whatsapp-confirm-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: #25D366;
+            color: white;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 16px;
+        }
+        .whatsapp-confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ===== WHY TILLY ===== */
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -714,7 +668,6 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-
         .why-card {
             background: var(--pure-white);
             border: 1px solid var(--gray-200);
@@ -722,16 +675,13 @@
             padding: 40px 32px;
             transition: var(--transition);
         }
-
         .why-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
             border-color: var(--neon);
         }
-
         .why-icon {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             background: var(--neon);
             border-radius: var(--radius-sm);
             display: flex;
@@ -740,18 +690,8 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
         }
-
-        .why-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .why-card p {
-            font-size: 0.9rem;
-            color: var(--gray-400);
-            line-height: 1.6;
-        }
+        .why-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+        .why-card p { font-size: 0.9rem; color: var(--gray-400); line-height: 1.6; }
 
         .comparison-table {
             max-width: 800px;
@@ -761,7 +701,6 @@
             overflow: hidden;
             border: 1px solid var(--gray-200);
         }
-
         .comparison-row {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -769,7 +708,6 @@
             border-bottom: 1px solid var(--gray-200);
             align-items: center;
         }
-
         .comparison-row.header {
             background: var(--black);
             color: var(--pure-white);
@@ -778,29 +716,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        .comparison-row:last-child { border-bottom: none; }
+        .comparison-row .col-others { color: var(--gray-400); }
+        .comparison-row .col-tilly { font-weight: 600; color: var(--black); }
+        .comparison-row .col-tilly .highlight { color: var(--neon-dark); }
 
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-row .col-others {
-            color: var(--gray-400);
-        }
-
-        .comparison-row .col-tilly {
-            font-weight: 600;
-            color: var(--black);
-        }
-
-        .comparison-row .col-tilly .highlight {
-            color: var(--neon-dark);
-        }
-
-        /* Service Area */
-        .area-section {
-            background: var(--gray-100);
-        }
-
+        /* ===== AREAS ===== */
+        .area-section { background: var(--gray-100); }
         .area-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -808,7 +730,6 @@
             max-width: 900px;
             margin: 0 auto;
         }
-
         .area-card {
             background: var(--pure-white);
             padding: 24px;
@@ -818,19 +739,14 @@
             border: 1px solid var(--gray-200);
             transition: var(--transition);
         }
-
         .area-card:hover {
             border-color: var(--neon);
             transform: translateY(-2px);
             box-shadow: var(--shadow);
         }
+        .area-card .area-icon { font-size: 1.5rem; margin-bottom: 8px; }
 
-        .area-card .area-icon {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        /* Social Proof */
+        /* ===== TESTIMONIALS ===== */
         .testimonials {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -838,7 +754,6 @@
             max-width: 1100px;
             margin: 0 auto;
         }
-
         .testimonial {
             background: var(--pure-white);
             border: 1px solid var(--gray-200);
@@ -846,33 +761,17 @@
             padding: 32px;
             transition: var(--transition);
         }
-
-        .testimonial:hover {
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-stars {
-            color: var(--neon-dark);
-            font-size: 1.1rem;
-            margin-bottom: 16px;
-        }
-
+        .testimonial:hover { box-shadow: var(--shadow); }
+        .testimonial-stars { color: var(--neon-dark); font-size: 1.1rem; margin-bottom: 16px; }
         .testimonial-text {
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 20px;
             color: var(--gray-800);
         }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
         .testimonial-avatar {
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             border-radius: 50%;
             background: var(--gray-200);
             display: flex;
@@ -882,22 +781,11 @@
             font-size: 0.9rem;
             color: var(--gray-600);
         }
+        .testimonial-name { font-weight: 600; font-size: 0.9rem; }
+        .testimonial-location { font-size: 0.8rem; color: var(--gray-400); }
 
-        .testimonial-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .testimonial-location {
-            font-size: 0.8rem;
-            color: var(--gray-400);
-        }
-
-        /* Instagram Feed */
-        .ig-section {
-            background: var(--black);
-        }
-
+        /* ===== INSTAGRAM ===== */
+        .ig-section { background: var(--black); }
         .ig-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -905,7 +793,6 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-
         .ig-item {
             aspect-ratio: 1;
             background: var(--gray-800);
@@ -915,26 +802,16 @@
             cursor: pointer;
             transition: var(--transition);
         }
-
-        .ig-item:hover {
-            transform: scale(1.02);
-        }
-
+        .ig-item:hover { transform: scale(1.02); }
         .ig-item img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             opacity: 0.8;
             transition: var(--transition);
         }
-
-        .ig-item:hover img {
-            opacity: 1;
-        }
-
+        .ig-item:hover img { opacity: 1; }
         .ig-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: rgba(0,0,0,0.4);
             display: flex;
             align-items: center;
@@ -942,17 +819,10 @@
             opacity: 0;
             transition: var(--transition);
         }
+        .ig-item:hover .ig-overlay { opacity: 1; }
+        .ig-icon { color: var(--pure-white); font-size: 1.5rem; }
 
-        .ig-item:hover .ig-overlay {
-            opacity: 1;
-        }
-
-        .ig-icon {
-            color: var(--pure-white);
-            font-size: 1.5rem;
-        }
-
-        /* Team Section */
+        /* ===== TEAM ===== */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -960,7 +830,6 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-
         .team-card {
             background: var(--pure-white);
             border: 1px solid var(--gray-200);
@@ -968,12 +837,10 @@
             overflow: hidden;
             transition: var(--transition);
         }
-
         .team-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
-
         .team-photo {
             height: 280px;
             background: linear-gradient(135deg, var(--gray-200), var(--gray-100));
@@ -983,40 +850,22 @@
             font-size: 3rem;
             color: var(--gray-400);
         }
-
-        .team-info {
-            padding: 24px;
-        }
-
-        .team-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-
+        .team-info { padding: 24px; }
+        .team-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
         .team-role {
             font-size: 0.85rem;
             color: var(--neon-dark);
             font-weight: 600;
             margin-bottom: 8px;
         }
+        .team-exp { font-size: 0.8rem; color: var(--gray-400); }
 
-        .team-exp {
-            font-size: 0.8rem;
-            color: var(--gray-400);
-        }
-
-        /* FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        /* ===== FAQ ===== */
+        .faq-list { max-width: 800px; margin: 0 auto; }
         .faq-item {
             border-bottom: 1px solid var(--gray-200);
             padding: 24px 0;
         }
-
         .faq-question {
             display: flex;
             justify-content: space-between;
@@ -1026,14 +875,9 @@
             font-size: 1.05rem;
             transition: var(--transition);
         }
-
-        .faq-question:hover {
-            color: var(--neon-dark);
-        }
-
+        .faq-question:hover { color: var(--neon-dark); }
         .faq-toggle {
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             border-radius: 50%;
             background: var(--gray-100);
             display: flex;
@@ -1044,36 +888,27 @@
             flex-shrink: 0;
             margin-left: 16px;
         }
-
         .faq-item.active .faq-toggle {
             transform: rotate(45deg);
             background: var(--neon);
         }
-
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
-
         .faq-item.active .faq-answer {
             max-height: 200px;
             padding-top: 16px;
         }
+        .faq-answer p { color: var(--gray-400); font-size: 0.95rem; line-height: 1.7; }
 
-        .faq-answer p {
-            color: var(--gray-400);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Footer */
+        /* ===== FOOTER ===== */
         .footer {
             background: var(--black);
             color: var(--pure-white);
             padding: 80px 5% 40px;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1081,11 +916,7 @@
             max-width: 1200px;
             margin: 0 auto 64px;
         }
-
-        .footer-brand {
-            max-width: 300px;
-        }
-
+        .footer-brand { max-width: 300px; }
         .footer-logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -1094,17 +925,12 @@
             align-items: center;
             gap: 10px;
         }
-
-        .footer-logo .logo-mark {
-            border-color: var(--neon);
-        }
-
+        .footer-logo .logo-mark { border-color: var(--neon); }
         .footer-brand p {
             color: var(--gray-400);
             font-size: 0.9rem;
             line-height: 1.7;
         }
-
         .footer-col h4 {
             font-size: 0.85rem;
             font-weight: 700;
@@ -1113,7 +939,6 @@
             margin-bottom: 20px;
             color: var(--gray-400);
         }
-
         .footer-col a {
             display: block;
             color: var(--gray-400);
@@ -1122,11 +947,7 @@
             font-size: 0.9rem;
             transition: var(--transition);
         }
-
-        .footer-col a:hover {
-            color: var(--neon);
-        }
-
+        .footer-col a:hover { color: var(--neon); }
         .footer-bottom {
             border-top: 1px solid var(--gray-800);
             padding-top: 32px;
@@ -1138,20 +959,10 @@
             flex-wrap: wrap;
             gap: 16px;
         }
-
-        .footer-bottom p {
-            color: var(--gray-600);
-            font-size: 0.85rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-        }
-
+        .footer-bottom p { color: var(--gray-600); font-size: 0.85rem; }
+        .social-links { display: flex; gap: 16px; }
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             border-radius: 50%;
             background: var(--gray-800);
             display: flex;
@@ -1162,14 +973,13 @@
             transition: var(--transition);
             font-size: 1.1rem;
         }
-
         .social-links a:hover {
             background: var(--neon);
             color: var(--black);
             transform: translateY(-2px);
         }
 
-        /* Mobile Menu */
+        /* ===== MOBILE ===== */
         .mobile-toggle {
             display: none;
             flex-direction: column;
@@ -1177,144 +987,48 @@
             cursor: pointer;
             z-index: 1001;
         }
-
         .mobile-toggle span {
-            width: 24px;
-            height: 2px;
+            width: 24px; height: 2px;
             background: var(--black);
             transition: var(--transition);
         }
 
-        /* Responsive */
         @media (max-width: 1024px) {
-            .hero-visual {
-                width: 40%;
-                opacity: 0.6;
-            }
+            .hero-visual { width: 40%; opacity: 0.6; }
         }
-
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .hero {
-                padding-top: 100px;
-                min-height: auto;
-                padding-bottom: 60px;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .hero-bg {
-                width: 100%;
-                border-radius: 0;
-                opacity: 0.5;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-
-            .hero-stats {
-                gap: 24px;
-            }
-
-            .section {
-                padding: 60px 5%;
-            }
-
-            .booking-card {
-                padding: 28px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .ig-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .comparison-row {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .comparison-row.header {
-                display: none;
-            }
-
-            .comparison-row .col-others::before {
-                content: 'Others: ';
-                font-weight: 600;
-                color: var(--gray-400);
-            }
-
-            .comparison-row .col-tilly::before {
-                content: 'Tilly: ';
-                font-weight: 600;
-                color: var(--neon-dark);
-            }
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .hero { padding-top: 100px; min-height: auto; padding-bottom: 60px; }
+            .hero-visual { display: none; }
+            .hero-bg { width: 100%; border-radius: 0; opacity: 0.5; }
+            .hero-content { max-width: 100%; }
+            .hero-stats { gap: 24px; }
+            .section { padding: 60px 5%; }
+            .booking-card { padding: 28px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .ig-grid { grid-template-columns: repeat(2, 1fr); }
+            .comparison-row { grid-template-columns: 1fr; gap: 8px; }
+            .comparison-row.header { display: none; }
+            .comparison-row .col-others::before { content: 'Others: '; font-weight: 600; color: var(--gray-400); }
+            .comparison-row .col-tilly::before { content: 'Tilly: '; font-weight: 600; color: var(--neon-dark); }
+            .calendar-options { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .radio-group {
-                grid-template-columns: 1fr;
-            }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; }
+            .btn { width: 100%; }
+            .radio-group { grid-template-columns: 1fr; }
+            .booking-nav { flex-direction: column; gap: 12px; }
         }
 
-        /* Scroll animations */
+        /* ===== ANIMATIONS ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Live badge */
-        .live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            background: rgba(200, 245, 96, 0.15);
-            border: 1px solid rgba(200, 245, 96, 0.3);
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--neon-dark);
-        }
-
-        .live-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--neon);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 <base target="_blank">
 </head>
@@ -1335,13 +1049,11 @@
             <a href="https://wa.me/962791119654" target="_blank" class="btn btn-sm btn-primary">WhatsApp</a>
         </div>
         <div class="mobile-toggle" onclick="toggleMobileMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="hero">
         <div class="hero-bg"></div>
         <div class="hero-visual">
@@ -1378,12 +1090,12 @@
         </div>
     </section>
 
-    <!-- Booking Agent Section -->
+    <!-- BOOKING AGENT with CALENDAR INTEGRATION -->
     <section class="section booking-section" id="booking">
         <div class="section-header">
             <div class="section-label">Book in 60 Seconds</div>
             <h2>Your Home, Perfected</h2>
-            <p>No phone calls. No waiting. Just tell us what you need, and we'll handle the rest.</p>
+            <p>No phone calls. No waiting. Book now — calendar invite included.</p>
         </div>
 
         <div class="booking-container">
@@ -1394,9 +1106,10 @@
                     <div class="step-dot"></div>
                     <div class="step-dot"></div>
                     <div class="step-dot"></div>
+                    <div class="step-dot"></div>
                 </div>
 
-                <!-- Step 1: Location -->
+                <!-- STEP 1: Location -->
                 <div class="booking-step active" data-step="1">
                     <div class="step-header">
                         <h3>Where is your home located?</h3>
@@ -1429,7 +1142,7 @@
                     </div>
                 </div>
 
-                <!-- Step 2: Size -->
+                <!-- STEP 2: Size -->
                 <div class="booking-step" data-step="2">
                     <div class="step-header">
                         <h3>How large is your space?</h3>
@@ -1460,7 +1173,7 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Frequency -->
+                <!-- STEP 3: Frequency -->
                 <div class="booking-step" data-step="3">
                     <div class="step-header">
                         <h3>How often would you like Tilly to visit?</h3>
@@ -1517,7 +1230,7 @@
                     </div>
                 </div>
 
-                <!-- Step 4: Extras -->
+                <!-- STEP 4: Extras -->
                 <div class="booking-step" data-step="4">
                     <div class="step-header">
                         <h3>Any special requests?</h3>
@@ -1561,11 +1274,11 @@
                     </div>
                 </div>
 
-                <!-- Step 5: Details & Confirm -->
+                <!-- STEP 5: Details & Confirm -->
                 <div class="booking-step" data-step="5">
                     <div class="step-header">
                         <h3>When works best for you?</h3>
-                        <p>We'll confirm within minutes via WhatsApp.</p>
+                        <p>We'll confirm within minutes via WhatsApp + send you a calendar invite.</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Preferred Date</label>
@@ -1588,8 +1301,8 @@
                         <input type="tel" class="form-input" id="clientPhone" placeholder="07xxxxxxxx">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Email (Optional)</label>
-                        <input type="email" class="form-input" id="clientEmail" placeholder="For calendar invite">
+                        <label class="form-label">Email (for calendar invite)</label>
+                        <input type="email" class="form-input" id="clientEmail" placeholder="your@email.com">
                     </div>
 
                     <div class="summary-card">
@@ -1616,11 +1329,86 @@
                         <button class="btn btn-neon" onclick="submitBooking()">📱 Send Booking via WhatsApp</button>
                     </div>
                 </div>
+
+                <!-- STEP 6: Confirmation + Calendar -->
+                <div class="booking-step" data-step="6">
+                    <div class="confirmation-card">
+                        <div class="confirmation-icon">✓</div>
+                        <h3>Booking Request Sent!</h3>
+                        <p>We've prepared your calendar invite. Save it now so you don't forget.</p>
+
+                        <div class="booking-ref" id="bookingRef">
+                            <span>📋</span>
+                            <span id="refCode">TILLY-0000</span>
+                        </div>
+
+                        <div class="confirmation-details">
+                            <h4>Booking Summary</h4>
+                            <div class="conf-row">
+                                <span>Service</span>
+                                <span id="confService">Tilly Home Cleaning</span>
+                            </div>
+                            <div class="conf-row">
+                                <span>Location</span>
+                                <span id="confLocation">—</span>
+                            </div>
+                            <div class="conf-row">
+                                <span>Date & Time</span>
+                                <span id="confDateTime">—</span>
+                            </div>
+                            <div class="conf-row">
+                                <span>Price</span>
+                                <span id="confPrice">—</span>
+                            </div>
+                            <div class="conf-row">
+                                <span>Status</span>
+                                <span style="color: var(--neon-dark);">⏳ Awaiting Confirmation</span>
+                            </div>
+                        </div>
+
+                        <p style="color: var(--gray-400); font-size: 0.9rem; margin-bottom: 20px;">
+                            Add to your calendar now. We'll confirm via WhatsApp within 15 minutes.
+                        </p>
+
+                        <div class="calendar-options">
+                            <a href="#" class="calendar-btn" id="googleCalLink" target="_blank">
+                                <div class="calendar-btn-icon">📅</div>
+                                <div class="calendar-btn-info">
+                                    <div class="calendar-btn-title">Google Calendar</div>
+                                    <div class="calendar-btn-sub">Add event online</div>
+                                </div>
+                            </a>
+                            <a href="#" class="calendar-btn" id="icsDownload" download="tilly-booking.ics">
+                                <div class="calendar-btn-icon">📥</div>
+                                <div class="calendar-btn-info">
+                                    <div class="calendar-btn-title">Download .ics</div>
+                                    <div class="calendar-btn-sub">Apple, Outlook, Google</div>
+                                </div>
+                            </a>
+                            <a href="#" class="calendar-btn" id="emailCalLink">
+                                <div class="calendar-btn-icon">✉️</div>
+                                <div class="calendar-btn-info">
+                                    <div class="calendar-btn-title">Email Invite</div>
+                                    <div class="calendar-btn-sub">Send to your inbox</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <a href="https://wa.me/962791119654" target="_blank" class="whatsapp-confirm-btn">
+                            💬 Open WhatsApp to Complete
+                        </a>
+
+                        <div style="margin-top: 24px;">
+                            <button class="btn btn-outline" onclick="resetBooking()">Book Another</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Why Tilly Section -->
+    <!-- Why Tilly -->
     <section class="section" id="why">
         <div class="section-header">
             <div class="section-label">The Tilly Difference</div>
@@ -1655,8 +1443,8 @@
             </div>
             <div class="why-card fade-in">
                 <div class="why-icon">⚡</div>
-                <h3>Instant Booking</h3>
-                <p>Book in 60 seconds. Get confirmation via WhatsApp. See your specialist's arrival in real-time.</p>
+                <h3>Instant Booking + Calendar</h3>
+                <p>Book in 60 seconds. Get a calendar invite instantly. See your specialist's arrival in real-time.</p>
             </div>
         </div>
 
@@ -1692,7 +1480,7 @@
             <div class="comparison-row">
                 <div>Booking Process</div>
                 <div class="col-others">Phone calls, delays</div>
-                <div class="col-tilly"><span class="highlight">60 seconds, instant confirm</span></div>
+                <div class="col-tilly"><span class="highlight">60 sec + Calendar Invite</span></div>
             </div>
             <div class="comparison-row">
                 <div>Guarantee</div>
@@ -1710,50 +1498,17 @@
             <p>From the villas of Dabouq to the penthouses of Abdoun. Every neighborhood, same exceptional standard.</p>
         </div>
         <div class="area-grid">
-            <div class="area-card">
-                <div class="area-icon">🏛️</div>
-                <div>Abdoun</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🏔️</div>
-                <div>Dabouq</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🌳</div>
-                <div>Deir Ghbar</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">✈️</div>
-                <div>Airport Road</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🏙️</div>
-                <div>Khalda</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🔄</div>
-                <div>5th Circle</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🔄</div>
-                <div>6th Circle</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🔄</div>
-                <div>7th Circle</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🏨</div>
-                <div>Shmeisani</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">🏘️</div>
-                <div>Jabal Amman</div>
-            </div>
-            <div class="area-card">
-                <div class="area-icon">📍</div>
-                <div>And Everywhere<br>in Between</div>
-            </div>
+            <div class="area-card"><div class="area-icon">🏛️</div><div>Abdoun</div></div>
+            <div class="area-card"><div class="area-icon">🏔️</div><div>Dabouq</div></div>
+            <div class="area-card"><div class="area-icon">🌳</div><div>Deir Ghbar</div></div>
+            <div class="area-card"><div class="area-icon">✈️</div><div>Airport Road</div></div>
+            <div class="area-card"><div class="area-icon">🏙️</div><div>Khalda</div></div>
+            <div class="area-card"><div class="area-icon">🔄</div><div>5th Circle</div></div>
+            <div class="area-card"><div class="area-icon">🔄</div><div>6th Circle</div></div>
+            <div class="area-card"><div class="area-icon">🔄</div><div>7th Circle</div></div>
+            <div class="area-card"><div class="area-icon">🏨</div><div>Shmeisani</div></div>
+            <div class="area-card"><div class="area-icon">🏘️</div><div>Jabal Amman</div></div>
+            <div class="area-card"><div class="area-icon">📍</div><div>And Everywhere<br>in Between</div></div>
         </div>
     </section>
 
@@ -1770,10 +1525,7 @@
                 <p class="testimonial-text">"I've tried every cleaning service in Abdoun. Tilly is the only one that treats my home like their own. Omar has been with us for 6 months — he knows every marble surface by heart."</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">L</div>
-                    <div>
-                        <div class="testimonial-name">Lina M.</div>
-                        <div class="testimonial-location">Abdoun, Amman</div>
-                    </div>
+                    <div><div class="testimonial-name">Lina M.</div><div class="testimonial-location">Abdoun, Amman</div></div>
                 </div>
             </div>
             <div class="testimonial fade-in">
@@ -1781,10 +1533,7 @@
                 <p class="testimonial-text">"The 1.5 JOD rate seemed too good to be true for this level of service. Three months in, I'm still impressed. They even organized my pantry without me asking."</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">A</div>
-                    <div>
-                        <div class="testimonial-name">Ahmad K.</div>
-                        <div class="testimonial-location">Dabouq, Amman</div>
-                    </div>
+                    <div><div class="testimonial-name">Ahmad K.</div><div class="testimonial-location">Dabouq, Amman</div></div>
                 </div>
             </div>
             <div class="testimonial fade-in">
@@ -1792,16 +1541,13 @@
                 <p class="testimonial-text">"As a St. Regis resident, I have high standards. Tilly exceeded them. The booking took 30 seconds, and my apartment was spotless by noon."</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">S</div>
-                    <div>
-                        <div class="testimonial-name">Sara H.</div>
-                        <div class="testimonial-location">5th Circle, Amman</div>
-                    </div>
+                    <div><div class="testimonial-name">Sara H.</div><div class="testimonial-location">5th Circle, Amman</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Instagram Feed -->
+    <!-- Instagram -->
     <section class="section ig-section" id="instagram">
         <div class="section-header">
             <div class="section-label" style="background:var(--neon); color:var(--black);">@tillytissue</div>
@@ -1811,27 +1557,19 @@
         <div class="ig-grid">
             <div class="ig-item">
                 <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Clean kitchen">
-                <div class="ig-overlay">
-                    <span class="ig-icon">📸</span>
-                </div>
+                <div class="ig-overlay"><span class="ig-icon">📸</span></div>
             </div>
             <div class="ig-item">
                 <img src="https://images.unsplash.com/photo-1600585154526-7d8f1c8c0b0e?w=400&q=80" alt="Living room">
-                <div class="ig-overlay">
-                    <span class="ig-icon">📸</span>
-                </div>
+                <div class="ig-overlay"><span class="ig-icon">📸</span></div>
             </div>
             <div class="ig-item">
                 <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Bathroom">
-                <div class="ig-overlay">
-                    <span class="ig-icon">📸</span>
-                </div>
+                <div class="ig-overlay"><span class="ig-icon">📸</span></div>
             </div>
             <div class="ig-item">
                 <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80" alt="Bedroom">
-                <div class="ig-overlay">
-                    <span class="ig-icon">📸</span>
-                </div>
+                <div class="ig-overlay"><span class="ig-icon">📸</span></div>
             </div>
         </div>
         <div style="text-align:center; margin-top:40px;">
@@ -1839,7 +1577,7 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team -->
     <section class="section" id="team">
         <div class="section-header">
             <div class="section-label">The Specialists</div>
@@ -1882,7 +1620,7 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ -->
     <section class="section" id="faq">
         <div class="section-header">
             <div class="section-label">Questions</div>
@@ -1894,54 +1632,42 @@
                     <span>Do you bring your own cleaning supplies?</span>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <p>Yes. We arrive fully equipped with hotel-grade, allergy-tested products and professional tools. You don't need to provide anything — except access to your home.</p>
-                </div>
+                <div class="faq-answer"><p>Yes. We arrive fully equipped with hotel-grade, allergy-tested products and professional tools. You don't need to provide anything — except access to your home.</p></div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Are your team members insured and background-checked?</span>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <p>Absolutely. Every Tilly specialist is thoroughly vetted, background-checked, and fully insured. We also carry liability insurance for your complete peace of mind.</p>
-                </div>
+                <div class="faq-answer"><p>Absolutely. Every Tilly specialist is thoroughly vetted, background-checked, and fully insured. We also carry liability insurance for your complete peace of mind.</p></div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>What is your cancellation policy?</span>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <p>Free cancellation up to 24 hours before your scheduled service. Within 24 hours, we charge 50% of the booking fee to compensate our specialists for reserved time.</p>
-                </div>
+                <div class="faq-answer"><p>Free cancellation up to 24 hours before your scheduled service. Within 24 hours, we charge 50% of the booking fee to compensate our specialists for reserved time.</p></div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>How is the 1.5 JOD/m² rate calculated?</span>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <p>Simple: total square meters × 1.5 JOD. A 150m² apartment = 225 JOD. No hidden fees. Regular plans (weekly/bi-weekly) include discounts of 10% and 7% respectively.</p>
-                </div>
+                <div class="faq-answer"><p>Simple: total square meters × 1.5 JOD. A 150m² apartment = 225 JOD. No hidden fees. Regular plans (weekly/bi-weekly) include discounts of 10% and 7% respectively.</p></div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>What if I'm not satisfied with the cleaning?</span>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <p>Contact us within 48 hours and we'll re-clean the affected areas at no charge. No questions, no hassle. Your satisfaction is the only metric that matters.</p>
-                </div>
+                <div class="faq-answer"><p>Contact us within 48 hours and we'll re-clean the affected areas at no charge. No questions, no hassle. Your satisfaction is the only metric that matters.</p></div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Do you serve areas outside Amman?</span>
                     <div class="faq-toggle">+</div>
                 </div>
-                <div class="faq-answer">
-                    <p>Currently, we focus exclusively on Amman to maintain our quality standards. This includes all neighborhoods from Abdoun and Dabouq to Khalda and the Airport Road corridor.</p>
-                </div>
+                <div class="faq-answer"><p>Currently, we focus exclusively on Amman to maintain our quality standards. This includes all neighborhoods from Abdoun and Dabouq to Khalda and the Airport Road corridor.</p></div>
             </div>
         </div>
     </section>
@@ -1988,61 +1714,46 @@
     </footer>
 
     <script>
-        // Navigation scroll effect
+        // ===== NAVIGATION =====
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            nav.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // ===== SCROLL ANIMATIONS =====
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, observerOptions);
-
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Booking logic
+        // ===== BOOKING STATE =====
         let currentStep = 1;
-        const totalSteps = 5;
+        const totalSteps = 6;
         let bookingData = {
-            location: '',
-            building: '',
-            size: 150,
-            frequency: 'once',
-            extras: [],
-            notes: '',
-            date: '',
-            time: 'morning',
-            name: '',
-            phone: '',
-            email: ''
+            location: '', building: '', size: 150,
+            frequency: 'once', extras: [], notes: '',
+            date: '', time: 'morning',
+            name: '', phone: '', email: ''
         };
 
-        const discounts = {
-            'once': 1,
-            'weekly': 0.9,
-            'biweekly': 0.93,
-            'monthly': 1
-        };
-
+        const discounts = { 'once': 1, 'weekly': 0.9, 'biweekly': 0.93, 'monthly': 1 };
         const freqLabels = {
             'once': 'One-time deep clean',
             'weekly': 'Weekly (10% off)',
             'biweekly': 'Bi-weekly (7% off)',
             'monthly': 'Monthly maintenance'
+        };
+        const timeLabels = {
+            'morning': '8:00 AM – 12:00 PM',
+            'afternoon': '12:00 PM – 4:00 PM',
+            'evening': '4:00 PM – 8:00 PM'
+        };
+        const timeHours = {
+            'morning': { start: 8, end: 12 },
+            'afternoon': { start: 12, end: 16 },
+            'evening': { start: 16, end: 20 }
         };
 
         function updateStepIndicator() {
@@ -2055,20 +1766,21 @@
         }
 
         function showStep(n) {
-            document.querySelectorAll('.booking-step').forEach(step => {
-                step.classList.remove('active');
-            });
+            document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
             document.querySelector(`[data-step="${n}"]`).classList.add('active');
             updateStepIndicator();
+            window.scrollTo({ top: document.getElementById('booking').offsetTop - 100, behavior: 'smooth' });
         }
 
         function nextStep() {
             if (currentStep < totalSteps) {
-                // Save current step data
                 saveStepData(currentStep);
-                currentStep++;
-                showStep(currentStep);
-                if (currentStep === 5) updateSummary();
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    showStep(currentStep);
+                    if (currentStep === 5) updateSummary();
+                    if (currentStep === 6) generateConfirmation();
+                }
             }
         }
 
@@ -2079,25 +1791,42 @@
             }
         }
 
+        function validateStep(step) {
+            if (step === 1) {
+                const loc = document.getElementById('location').value;
+                if (!loc) { alert('Please select your area in Amman.'); return false; }
+            }
+            if (step === 5) {
+                const name = document.getElementById('clientName').value.trim();
+                const phone = document.getElementById('clientPhone').value.trim();
+                if (!name) { alert('Please enter your name.'); return false; }
+                if (!phone) { alert('Please enter your phone number.'); return false; }
+            }
+            return true;
+        }
+
         function saveStepData(step) {
             if (step === 1) {
                 bookingData.location = document.getElementById('location').value;
                 bookingData.building = document.getElementById('building').value;
             }
-            if (step === 2) {
-                bookingData.size = parseInt(document.getElementById('sizeSlider').value);
-            }
+            if (step === 2) bookingData.size = parseInt(document.getElementById('sizeSlider').value);
             if (step === 3) {
                 const freq = document.querySelector('input[name="frequency"]:checked');
                 if (freq) bookingData.frequency = freq.value;
             }
             if (step === 4) {
                 const extras = [];
-                document.querySelectorAll('.checkbox-card input:checked').forEach(cb => {
-                    extras.push(cb.value);
-                });
+                document.querySelectorAll('.checkbox-card input:checked').forEach(cb => extras.push(cb.value));
                 bookingData.extras = extras;
                 bookingData.notes = document.getElementById('notes').value;
+            }
+            if (step === 5) {
+                bookingData.date = document.getElementById('prefDate').value;
+                bookingData.time = document.getElementById('prefTime').value;
+                bookingData.name = document.getElementById('clientName').value;
+                bookingData.phone = document.getElementById('clientPhone').value;
+                bookingData.email = document.getElementById('clientEmail').value;
             }
         }
 
@@ -2118,9 +1847,7 @@
             const basePrice = bookingData.size * 1.5;
             const discount = discounts[bookingData.frequency] || 1;
             const finalPrice = Math.round(basePrice * discount);
-
             document.getElementById('priceValue').textContent = finalPrice;
-
             const freqPreview = document.getElementById('freqPricePreview');
             if (bookingData.frequency !== 'once') {
                 freqPreview.style.display = 'flex';
@@ -2135,97 +1862,246 @@
             document.getElementById('summaryLocation').textContent = bookingData.location || '—';
             document.getElementById('summarySize').textContent = bookingData.size + ' m²';
             document.getElementById('summaryFreq').textContent = freqLabels[bookingData.frequency];
-
             const basePrice = bookingData.size * 1.5;
             const discount = discounts[bookingData.frequency] || 1;
             const finalPrice = Math.round(basePrice * discount);
             document.getElementById('summaryTotal').textContent = finalPrice + ' JOD';
         }
 
-        function submitBooking() {
-            // Save final step data
-            bookingData.date = document.getElementById('prefDate').value;
-            bookingData.time = document.getElementById('prefTime').value;
-            bookingData.name = document.getElementById('clientName').value;
-            bookingData.phone = document.getElementById('clientPhone').value;
-            bookingData.email = document.getElementById('clientEmail').value;
-
-            // Validation
-            if (!bookingData.name || !bookingData.phone) {
-                alert('Please fill in your name and phone number.');
-                return;
-            }
-
+        // ===== CALENDAR INTEGRATION =====
+        function generateICS() {
             const basePrice = bookingData.size * 1.5;
             const discount = discounts[bookingData.frequency] || 1;
             const finalPrice = Math.round(basePrice * discount);
 
-            const timeLabels = {
-                'morning': '8:00 AM – 12:00 PM',
-                'afternoon': '12:00 PM – 4:00 PM',
-                'evening': '4:00 PM – 8:00 PM'
+            // Parse date and time
+            const dateStr = bookingData.date || new Date().toISOString().split('T')[0];
+            const timeSlot = timeHours[bookingData.time] || timeHours['morning'];
+            const [year, month, day] = dateStr.split('-').map(Number);
+
+            // Create dates in local Amman time (UTC+3)
+            const startDate = new Date(year, month - 1, day, timeSlot.start, 0, 0);
+            const endDate = new Date(year, month - 1, day, timeSlot.end, 0, 0);
+
+            // Format to ICS UTC format (YYYYMMDDTHHMMSSZ)
+            const fmt = (d) => {
+                return d.getUTCFullYear().toString() +
+                    String(d.getUTCMonth() + 1).padStart(2, '0') +
+                    String(d.getUTCDate()).padStart(2, '0') + 'T' +
+                    String(d.getUTCHours()).padStart(2, '0') +
+                    String(d.getUTCMinutes()).padStart(2, '0') +
+                    String(d.getUTCSeconds()).padStart(2, '0') + 'Z';
             };
 
-            const message = `🧼 *New Tilly Booking Request*
+            const dtStart = fmt(startDate);
+            const dtEnd = fmt(endDate);
+            const dtStamp = fmt(new Date());
+            const uid = 'tilly-' + Date.now() + '@tillytissue.com';
 
-📍 *Location:* ${bookingData.location}${bookingData.building ? ' — ' + bookingData.building : ''}
-📐 *Size:* ${bookingData.size} m²
-💰 *Estimated Price:* ${finalPrice} JOD
-🔄 *Frequency:* ${freqLabels[bookingData.frequency]}
-📅 *Preferred Date:* ${bookingData.date || 'Flexible'}
-⏰ *Preferred Time:* ${timeLabels[bookingData.time]}
+            const extrasText = bookingData.extras.length > 0 ? '\nSpecial Requests: ' + bookingData.extras.join(', ') : '';
+            const notesText = bookingData.notes ? '\nNotes: ' + bookingData.notes : '';
+            const buildingText = bookingData.building ? '\nBuilding: ' + bookingData.building : '';
 
-👤 *Name:* ${bookingData.name}
-📱 *Phone:* ${bookingData.phone}
-${bookingData.email ? '📧 *Email:* ' + bookingData.email : ''}
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Tilly Tissue Cleaning//Tilly Booking//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${dtStamp}
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:Tilly Cleaning Service — ${bookingData.location}
+DESCRIPTION:Booking Reference: ${document.getElementById('refCode').textContent}\n\nService: ${freqLabels[bookingData.frequency]}\nLocation: ${bookingData.location}${buildingText}\nSize: ${bookingData.size} m²\nEstimated Price: ${finalPrice} JOD\nClient: ${bookingData.name}\nPhone: ${bookingData.phone}${extrasText}${notesText}\n\n—\nTilly Tissue Cleaning\nAmman, Jordan\nwa.me/962791119654
+LOCATION:${bookingData.location}, Amman, Jordan
+STATUS:TENTATIVE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tilly Cleaning Appointment Reminder
+TRIGGER:-PT24H
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
 
-${bookingData.extras.length > 0 ? '✨ *Special Requests:* ' + bookingData.extras.join(', ') : ''}
-${bookingData.notes ? '📝 *Notes:* ' + bookingData.notes : ''}
-
-———
-Sent from tillytissue.com`;
-
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/962791119654?text=${encodedMessage}`, '_blank');
+            return icsContent;
         }
 
-        // FAQ toggle
-        function toggleFaq(element) {
-            const item = element.parentElement;
-            const isActive = item.classList.contains('active');
+        function generateGoogleCalLink() {
+            const basePrice = bookingData.size * 1.5;
+            const discount = discounts[bookingData.frequency] || 1;
+            const finalPrice = Math.round(basePrice * discount);
 
-            // Close all
-            document.querySelectorAll('.faq-item').forEach(faq => {
-                faq.classList.remove('active');
+            const dateStr = bookingData.date || new Date().toISOString().split('T')[0];
+            const timeSlot = timeHours[bookingData.time] || timeHours['morning'];
+            const [year, month, day] = dateStr.split('-').map(Number);
+
+            const startDate = new Date(year, month - 1, day, timeSlot.start, 0, 0);
+            const endDate = new Date(year, month - 1, day, timeSlot.end, 0, 0);
+
+            // Format for Google Calendar: YYYYMMDDTHHMMSS/YYYYMMDDTHHMMSS
+            const fmt = (d) => {
+                return d.getFullYear().toString() +
+                    String(d.getMonth() + 1).padStart(2, '0') +
+                    String(d.getDate()).padStart(2, '0') + 'T' +
+                    String(d.getHours()).padStart(2, '0') +
+                    String(d.getMinutes()).padStart(2, '0') +
+                    String(d.getSeconds()).padStart(2, '0');
+            };
+
+            const extrasText = bookingData.extras.length > 0 ? '\nSpecial Requests: ' + bookingData.extras.join(', ') : '';
+            const notesText = bookingData.notes ? '\nNotes: ' + bookingData.notes : '';
+            const buildingText = bookingData.building ? '\nBuilding: ' + bookingData.building : '';
+
+            const params = new URLSearchParams({
+                action: 'TEMPLATE',
+                text: `Tilly Cleaning — ${bookingData.location}`,
+                dates: fmt(startDate) + '/' + fmt(endDate),
+                details: `Booking Ref: ${document.getElementById('refCode').textContent}\n\nService: ${freqLabels[bookingData.frequency]}\nSize: ${bookingData.size} m²\nPrice: ${finalPrice} JOD\nClient: ${bookingData.name}\nPhone: ${bookingData.phone}${buildingText}${extrasText}${notesText}\n\nTilly Tissue Cleaning | Amman, Jordan`,
+                location: `${bookingData.location}, Amman, Jordan`,
+                add: bookingData.email || ''
             });
 
-            // Open clicked if wasn't active
-            if (!isActive) {
-                item.classList.add('active');
+            return 'https://calendar.google.com/calendar/render?' + params.toString();
+        }
+
+        function generateEmailCalLink() {
+            const basePrice = bookingData.size * 1.5;
+            const discount = discounts[bookingData.frequency] || 1;
+            const finalPrice = Math.round(basePrice * discount);
+
+            const subject = encodeURIComponent(`Tilly Cleaning Booking — ${bookingData.location} — ${bookingData.date}`);
+            const body = encodeURIComponent(
+                `Hi ${bookingData.name},\n\n` +
+                `Your Tilly cleaning has been scheduled!\n\n` +
+                `📍 Location: ${bookingData.location}${bookingData.building ? ' — ' + bookingData.building : ''}\n` +
+                `📅 Date: ${bookingData.date || 'Flexible'}\n` +
+                `⏰ Time: ${timeLabels[bookingData.time]}\n` +
+                `📐 Size: ${bookingData.size} m²\n` +
+                `💰 Estimated Price: ${finalPrice} JOD\n` +
+                `🔄 Service: ${freqLabels[bookingData.frequency]}\n\n` +
+                `We'll confirm via WhatsApp within 15 minutes.\n\n` +
+                `—\nTilly Tissue Cleaning\nAmman, Jordan\nwa.me/962791119654`
+            );
+
+            return `mailto:${bookingData.email || ''}?subject=${subject}&body=${body}`;
+        }
+
+        function generateConfirmation() {
+            // Generate booking reference
+            const ref = 'TILLY-' + Math.random().toString(36).substr(2, 4).toUpperCase() + Date.now().toString().slice(-4);
+            document.getElementById('refCode').textContent = ref;
+
+            // Update confirmation details
+            const basePrice = bookingData.size * 1.5;
+            const discount = discounts[bookingData.frequency] || 1;
+            const finalPrice = Math.round(basePrice * discount);
+
+            document.getElementById('confLocation').textContent = bookingData.location + (bookingData.building ? ' — ' + bookingData.building : '');
+            document.getElementById('confDateTime').textContent = (bookingData.date || 'Flexible') + ' | ' + timeLabels[bookingData.time];
+            document.getElementById('confPrice').textContent = finalPrice + ' JOD';
+
+            // Generate calendar links
+            document.getElementById('googleCalLink').href = generateGoogleCalLink();
+
+            // Generate ICS blob
+            const icsContent = generateICS();
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const icsUrl = URL.createObjectURL(blob);
+            document.getElementById('icsDownload').href = icsUrl;
+
+            // Email link
+            if (bookingData.email) {
+                document.getElementById('emailCalLink').href = generateEmailCalLink();
+                document.getElementById('emailCalLink').style.opacity = '1';
+                document.getElementById('emailCalLink').style.pointerEvents = 'auto';
+            } else {
+                document.getElementById('emailCalLink').style.opacity = '0.4';
+                document.getElementById('emailCalLink').style.pointerEvents = 'none';
+                document.getElementById('emailCalLink').querySelector('.calendar-btn-sub').textContent = 'Add email in Step 5';
             }
         }
 
-        // Set minimum date to today
-        document.getElementById('prefDate').min = new Date().toISOString().split('T')[0];
+        function submitBooking() {
+            saveStepData(5);
+            if (!validateStep(5)) return;
 
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '70px';
-            navLinks.style.left = '5%';
-            navLinks.style.right = '5%';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.background = 'var(--off-white)';
-            navLinks.style.padding = '24px';
-            navLinks.style.borderRadius = 'var(--radius)';
-            navLinks.style.boxShadow = 'var(--shadow-lg)';
-            navLinks.style.gap = '16px';
-            navLinks.style.zIndex = '999';
+            const basePrice = bookingData.size * 1.5;
+            const discount = discounts[bookingData.frequency] || 1;
+            const finalPrice = Math.round(basePrice * discount);
+            const ref = 'TILLY-' + Math.random().toString(36).substr(2, 4).toUpperCase() + Date.now().toString().slice(-4);
+
+            const extrasText = bookingData.extras.length > 0 ? '\n✨ *Special Requests:* ' + bookingData.extras.join(', ') : '';
+            const notesText = bookingData.notes ? '\n📝 *Notes:* ' + bookingData.notes : '';
+            const buildingText = bookingData.building ? ' — ' + bookingData.building : '';
+            const emailText = bookingData.email ? '\n📧 *Email:* ' + bookingData.email : '';
+
+            const message = `🧼 *NEW TILLY BOOKING*\n*Ref: ${ref}*\n\n📍 *Location:* ${bookingData.location}${buildingText}\n📐 *Size:* ${bookingData.size} m²\n💰 *Estimated Price:* ${finalPrice} JOD\n🔄 *Frequency:* ${freqLabels[bookingData.frequency]}\n📅 *Preferred Date:* ${bookingData.date || 'Flexible'}\n⏰ *Preferred Time:* ${timeLabels[bookingData.time]}\n\n👤 *Name:* ${bookingData.name}\n📱 *Phone:* ${bookingData.phone}${emailText}${extrasText}${notesText}\n\n———\nSent from tillytissue.com | Calendar invite sent to client`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/962791119654?text=${encodedMessage}`, '_blank');
+
+            // Advance to confirmation
+            currentStep = 6;
+            showStep(6);
         }
 
-        // Initialize
+        function resetBooking() {
+            currentStep = 1;
+            bookingData = {
+                location: '', building: '', size: 150,
+                frequency: 'once', extras: [], notes: '',
+                date: '', time: 'morning',
+                name: '', phone: '', email: ''
+            };
+            // Reset form fields
+            document.getElementById('location').value = '';
+            document.getElementById('building').value = '';
+            document.getElementById('sizeSlider').value = 150;
+            document.getElementById('prefDate').value = '';
+            document.getElementById('prefTime').value = 'morning';
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('notes').value = '';
+            document.querySelectorAll('input[name="frequency"]').forEach(r => r.checked = (r.value === 'once'));
+            document.querySelectorAll('.checkbox-card input').forEach(cb => cb.checked = false);
+            updateSize(150);
+            showStep(1);
+        }
+
+        // ===== FAQ =====
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        }
+
+        // ===== MOBILE MENU =====
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const isOpen = navLinks.style.display === 'flex';
+            if (isOpen) {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '5%';
+                navLinks.style.right = '5%';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'var(--off-white)';
+                navLinks.style.padding = '24px';
+                navLinks.style.borderRadius = 'var(--radius)';
+                navLinks.style.boxShadow = 'var(--shadow-lg)';
+                navLinks.style.gap = '16px';
+                navLinks.style.zIndex = '999';
+            }
+        }
+
+        // ===== INIT =====
+        document.getElementById('prefDate').min = new Date().toISOString().split('T')[0];
         calculatePrice();
     </script>
 </body>
