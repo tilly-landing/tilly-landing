@@ -2040,7 +2040,34 @@ END:VCALENDAR`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/962791119654?text=${encodedMessage}`, '_blank');
+// --- API INTEGRATION: SEND TO ADMIN COMMAND CENTER ---
+            const API_URL = 'https://script.google.com/macros/s/AKfycbw-3Sfy18k0XBhsDczoMH8KxHMUVpjfnJeiSbnhWqqK0rgpETM0EMJRYntzO-BxIR7Q/exec';
+            
+            const generatedRef = 'TLY-' + Math.floor(1000 + Math.random() * 9000);
+            
+            const payload = {
+                action: 'NEW_BOOKING',
+                ref: generatedRef,
+                status: 'PENDING',
+                name: bookingData.name || document.getElementById('clientName')?.value || 'Unknown Client',
+                phone: bookingData.phone || document.getElementById('clientPhone')?.value || 'No Phone',
+                location: bookingData.location || document.getElementById('location')?.value || 'N/A',
+                building: bookingData.building || document.getElementById('building')?.value || '',
+                size: bookingData.size || document.getElementById('sizeSlider')?.value || 150,
+                date: bookingData.date || document.getElementById('prefDate')?.value || 'TBD',
+                timeLabel: bookingData.time || document.getElementById('prefTime')?.value || 'morning',
+                price: document.getElementById('totalPrice') ? document.getElementById('totalPrice').innerText.replace(/[^0-9]/g, '') : 0,
+                frequency: bookingData.frequency || 'once',
+                extras: (bookingData.extras && bookingData.extras.length > 0) ? bookingData.extras.join(', ') : 'None',
+                notes: bookingData.notes || document.getElementById('notes')?.value || ''
+            };
 
+            fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            }).catch(err => console.error("Database sync error:", err));
+            // --- END API INTEGRATION ---
             // Advance to confirmation
             currentStep = 6;
             showStep(6);
